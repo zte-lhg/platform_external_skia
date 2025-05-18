@@ -125,7 +125,7 @@ bool SkSurface::peekPixels(SkPixmap* pmap) {
 bool SkSurface::readPixels(const SkPixmap& pm, int srcX, int srcY) {
     return this->getCanvas()->readPixels(pm, srcX, srcY);
 }
-
+// 从 SkSurface 中获取 pixels 像素信息
 bool SkSurface::readPixels(const SkImageInfo& dstInfo, void* dstPixels, size_t dstRowBytes,
                            int srcX, int srcY) {
     return this->readPixels({dstInfo, dstPixels, dstRowBytes}, srcX, srcY);
@@ -150,7 +150,7 @@ void SkSurface::asyncRescaleAndReadPixels(const SkImageInfo& info,
     asSB(this)->onAsyncRescaleAndReadPixels(
             info, srcRect, rescaleGamma, rescaleMode, callback, context);
 }
-
+// asyncRescaleAndReadPixels 异步读取 pixels 像素信息
 void SkSurface::asyncRescaleAndReadPixelsYUV420(SkYUVColorSpace yuvColorSpace,
                                                 sk_sp<SkColorSpace> dstColorSpace,
                                                 const SkIRect& srcRect,
@@ -199,6 +199,7 @@ void SkSurface::asyncRescaleAndReadPixelsYUVA420(SkYUVColorSpace yuvColorSpace,
                                                   context);
 }
 
+// 将 skPixmap 信息写入
 void SkSurface::writePixels(const SkPixmap& pmap, int x, int y) {
     if (pmap.addr() == nullptr || pmap.width() <= 0 || pmap.height() <= 0) {
         return;
